@@ -229,8 +229,8 @@ static EB_ERRORTYPE ApplySaoOffsetsLcu(
     EB_U8           *temporalBufferLeft;
     EB_U8           tmp[64], tmpY[64];
     EB_U32          i, j;
-    EB_S8           ReorderedsaoOffset[4 + 1];
-    EB_S8           OrderedsaoOffsetBo[5];
+    EB_S8           ReorderedsaoOffset[8];
+    EB_S8           OrderedsaoOffsetBo[8];
     EB_BOOL         FirstColLcu, LastColLcu, FirstRowLcu, LastRowLcu;
     EncodeContext_t *encodeContextPtr;
 
@@ -244,12 +244,18 @@ static EB_ERRORTYPE ApplySaoOffsetsLcu(
     ReorderedsaoOffset[2] = 0;
     ReorderedsaoOffset[3] = (EB_S8)saoPtr->saoOffset[videoComponent][2];
     ReorderedsaoOffset[4] = (EB_S8)saoPtr->saoOffset[videoComponent][3];
+    ReorderedsaoOffset[5] = 0;
+    ReorderedsaoOffset[6] = 0;
+    ReorderedsaoOffset[7] = 0;
 
     OrderedsaoOffsetBo[0] = (EB_S8)saoPtr->saoOffset[videoComponent][0];
     OrderedsaoOffsetBo[1] = (EB_S8)saoPtr->saoOffset[videoComponent][1];
     OrderedsaoOffsetBo[2] = (EB_S8)saoPtr->saoOffset[videoComponent][2];
     OrderedsaoOffsetBo[3] = (EB_S8)saoPtr->saoOffset[videoComponent][3];
     OrderedsaoOffsetBo[4] = 0;
+    OrderedsaoOffsetBo[5] = 0;
+    OrderedsaoOffsetBo[6] = 0;
+    OrderedsaoOffsetBo[7] = 0;
 
     temporalBufferLeft = contextPtr->saoLeftBuffer[pingpongIdxLeft];
     temporalBufferUpper = contextPtr->saoUpBuffer[pingpongIdxUp] + (tbOriginX >> isChroma);
@@ -753,8 +759,8 @@ static EB_ERRORTYPE ApplySaoOffsetsLcu16bit(
     EB_U16           *temporalBufferLeft;
     EB_U16           tmp[64], tmpY[64];
     EB_U32          i, j;
-    EB_S8           ReorderedsaoOffset[4 + 1];
-    EB_S8           OrderedsaoOffsetBo[5];
+    EB_S8           ReorderedsaoOffset[8];
+    EB_S8           OrderedsaoOffsetBo[8];
     EB_BOOL         FirstColLcu, LastColLcu, FirstRowLcu, LastRowLcu;
 
     (void)bitDepth;
@@ -765,12 +771,19 @@ static EB_ERRORTYPE ApplySaoOffsetsLcu16bit(
     ReorderedsaoOffset[2] = 0;
     ReorderedsaoOffset[3] = (EB_S8)saoPtr->saoOffset[videoComponent][2];
     ReorderedsaoOffset[4] = (EB_S8)saoPtr->saoOffset[videoComponent][3];
+    ReorderedsaoOffset[5] = 0;
+    ReorderedsaoOffset[6] = 0;
+    ReorderedsaoOffset[7] = 0;
 
     OrderedsaoOffsetBo[0] = (EB_S8)saoPtr->saoOffset[videoComponent][0];
     OrderedsaoOffsetBo[1] = (EB_S8)saoPtr->saoOffset[videoComponent][1];
     OrderedsaoOffsetBo[2] = (EB_S8)saoPtr->saoOffset[videoComponent][2];
     OrderedsaoOffsetBo[3] = (EB_S8)saoPtr->saoOffset[videoComponent][3];
     OrderedsaoOffsetBo[4] = 0;
+    OrderedsaoOffsetBo[5] = 0;
+    OrderedsaoOffsetBo[6] = 0;
+    OrderedsaoOffsetBo[7] = 0;
+
 
     temporalBufferLeft = contextPtr->saoLeftBuffer16[pingpongIdxLeft];
     temporalBufferUpper = contextPtr->saoUpBuffer16[pingpongIdxUp] + (tbOriginX >> isChroma);

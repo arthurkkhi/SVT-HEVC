@@ -263,7 +263,7 @@ extern EB_ERRORTYPE SAOApplyEO_135_16bit_SSE2_INTRIN(
     EB_U32  lcuHeight,
     EB_U32  lcuWidth)
 {
-    EB_ALIGN(16) EB_S8 signTopLeftTemp[MAX_LCU_SIZE + 1];
+    EB_ALIGN(16) EB_S8 signTopLeftTemp[MAX_LCU_SIZE + 16];
     EB_ALIGN(16) EB_S8 * signTLBuf = signTopLeftTemp;
     EB_U32 width_cnt;
     EB_S32 height_cnt; // needs to signed
@@ -403,7 +403,7 @@ EB_ERRORTYPE SAOApplyEO_45_16bit_SSE2_INTRIN(
     EB_U32                           lcuHeight,
     EB_U32                           lcuWidth)
 {
-    EB_ALIGN(16) EB_S8 signTopRightTempBuffer[MAX_LCU_SIZE + 1];
+    EB_ALIGN(16) EB_S8 signTopRightTempBuffer[MAX_LCU_SIZE + 16];
     EB_ALIGN(16) EB_S8 * signTopRightBufp = signTopRightTempBuffer;
     
     __m128i xmm_1, xmm_0, xmm_n1, xmm_n2, xmm_n3, xmm_n4, Max10bit, saoOffset0_7, saoOffset0_4, saoOffset0, saoOffset1, saoOffset2, saoOffset3;

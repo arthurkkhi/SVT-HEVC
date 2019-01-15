@@ -367,7 +367,7 @@ extern EB_U32 ASM_TYPES;
 
 /** Depth offsets
 */
-static const EB_U8 DepthOffset[4]       = { 85, 21, 5, 1 };
+static const EB_U8 DepthOffset[5]       = { 85, 21, 5, 1, 0 };
 
 /** ME 2Nx2N offsets
 */

@@ -14,6 +14,7 @@ extern "C" {
 #define NUMBER_OF_INTRA_MODES_MINUS_TWO  34
 #define LUMA_INTRA_MODE_BITS_GRE31       196608 // farctional number of bit required for signaling luma intra mode greater than 31
 #define QP_NUM                           52
+#define CHROMA_QP_NUM                    64
 
 // *Note - As of Oct 2011, the JCT-VC uses the PSNR forumula
 //  PSNR = (LUMA_WEIGHT * PSNRy + PSNRu + PSNRv) / (2+LUMA_WEIGHT)
@@ -344,7 +345,7 @@ static const EB_U32 lambdaModeDecisionRaSseNonRef[QP_NUM] = {
     730144440,  919924350,  1159032053, 1460288881
 
 };
-static const EB_U32 ChromaWeightFactorRaBase[QP_NUM] = {
+static const EB_U32 ChromaWeightFactorRaBase[CHROMA_QP_NUM] = {
     65536,  65536,  65536,  65536,
     65536,  65536,  65536,  65536,
     65536,  65536,  65536,  65536,
@@ -357,11 +358,14 @@ static const EB_U32 ChromaWeightFactorRaBase[QP_NUM] = {
     104032, 131072, 131072, 165140,
     165140, 208064, 208064, 262144,
     330281, 330281, 416128, 524288,
-    524288, 660561, 832255, 1048576
+    524288, 660561, 832255, 1048576,
+    1048576, 1048576, 1048576, 1048576,
+    1048576, 1048576, 1048576, 1048576,
+    1048576, 1048576, 1048576, 1048576
 
 };
 
-static const EB_U32 ChromaWeightFactorRaRefNonBase[QP_NUM] = {
+static const EB_U32 ChromaWeightFactorRaRefNonBase[CHROMA_QP_NUM] = {
 
     65536,  65536,  65536,  65536,
     65536,  65536,  65536,  65536,
@@ -375,11 +379,14 @@ static const EB_U32 ChromaWeightFactorRaRefNonBase[QP_NUM] = {
     113489, 142988, 136771, 172320,
     165140, 208064, 208064, 262144,
     330281, 330281, 416128, 524288,
-    524288, 660561, 832255, 1048576
+    524288, 660561, 832255, 1048576,
+    1048576, 1048576, 1048576, 1048576,
+    1048576, 1048576, 1048576, 1048576,
+    1048576, 1048576, 1048576, 1048576
 
 };
 
-static const EB_U32 ChromaWeightFactorRaNonRef[QP_NUM] = {
+static const EB_U32 ChromaWeightFactorRaNonRef[CHROMA_QP_NUM] = {
 
     65536,  65536,  65536,  65536,
     65536,  65536,  65536,  65536,
@@ -393,13 +400,11 @@ static const EB_U32 ChromaWeightFactorRaNonRef[QP_NUM] = {
     113489, 142988, 136771, 172320,
     165140, 208064, 208064, 262144,
     330281, 330281, 416128, 524288,
-    524288, 660561, 832255, 1048576
+    524288, 660561, 832255, 1048576,
+    1048576, 1048576, 1048576, 1048576,
+    1048576, 1048576, 1048576, 1048576,
+    1048576, 1048576, 1048576, 1048576
 
-};
-
-static const EB_U32 intraLumaModeMapping[] = { // intra luma mode mapping for scaling
-    3,  4,  4,  3,  5,  5,  5,  3,  1,  1,  1,  3,  6,  6,  6,  3,  7,  7,  4,  3,  8,  8,  8,  3,  2,  2,  2,  3,  9,  9,  9,  3,  3,  3,        // conversion to 9 modes
-    3,  3,  3,  3,  3,  3,  3,  1,  1,  1,  1,  1,  1,  1,  3,  3,  3,  3,  3,  3,  3,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  3,  3,  3         // conversion to 3 modes
 };
 #ifdef __cplusplus
 }
